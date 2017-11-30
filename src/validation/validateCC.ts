@@ -3,7 +3,7 @@ export const reverseDoubleEveryOtherDigits = (cardNumber: string) => {
   const cardDigits: string[] = cardNumber.split('');
   const transformCardDigits = cardDigits.reverse().map((d, i) => {
     if (i % 2 === 0) {
-      return d
+      return d;
     }
     return (Number(d) * 2).toString();
   }).reverse();
