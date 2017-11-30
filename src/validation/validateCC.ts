@@ -1,14 +1,13 @@
+const compose = require('lodash.compose');
 
 export const reverseDoubleEveryOtherDigits = (cardNumber: string) => {
   const cardDigits: string[] = cardNumber.split('');
-  const transformCardDigits = cardDigits.reverse().map((d, i) => {
+  return cardDigits.reverse().map((d, i) => {
     if (i % 2 === 0) {
       return d;
     }
     return (Number(d) * 2).toString();
   }).reverse();
-
-  return transformCardDigits;
 };
 
 export const transformAndSumDigits = (transformCardDigits: string[]): number => {
@@ -23,6 +22,7 @@ export const transformAndSumDigits = (transformCardDigits: string[]): number => 
 
 export const validate = (sum: number): boolean => sum % 10 === 0;
 
-export default function (cardNumber: string): boolean {
-  return validate(transformAndSumDigits(reverseDoubleEveryOtherDigits(cardNumber)));
-}
+const validateCC = (cardNumber: string) => 
+compose(validate, transformAndSumDigits, reverseDoubleEveryOtherDigits)(cardNumber);
+
+export default validateCC;
