@@ -16,8 +16,8 @@ export const transformAndSumDigits = (transformCardDigits: string[]): number => 
       return d.split('');
     }
     return d;
-  }).reduce((previousVal, currentVal) => [...previousVal, ...currentVal], [] as any)
-    .reduce((acc, curr) => acc + Number(curr), 0);
+  }).reduce((previousVal, currentVal: string[]) => [...previousVal, ...currentVal], [] as any)
+    .reduce((previousVal: number, currentVal: string) => previousVal + Number(currentVal), 0);
 };
 
 export const validate = (sum: number): boolean => sum % 10 === 0;
