@@ -1,0 +1,42 @@
+.form_header {
+    margin-top: 10px;
+    margin-bottom: 15px;
+    font-size: 18px;
+}
+
+
+.form-group {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 0;
+    margin-bottom: 0;
+    width: 100%;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.form {
+    width: 50vw;
+}
+.label {
+    font-size: 1em;
+    color: #555;
+}
+
+.form-control {
+    border-radius: .25rem;
+    line-height: 1.45667;
+    min-height: 3.125rem;
+    padding: 0 .625rem;
+    width: 100%;
+}
+
+
+.label-error {
+    text-transform: none;
+    color: #b73c21;
+    line-height: 15px;
+    margin-top: 6px;
+    margin-bottom: 0;
+}
