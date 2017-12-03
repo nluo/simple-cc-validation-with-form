@@ -75,3 +75,12 @@
 .result {
   margin-top: 20px;
 }
+
+@media (max-width: 800px) {
+  .form {
+    width: 80vw;
+  }
+  .form-group {
+    max-width: 80vw;
+}
+}
