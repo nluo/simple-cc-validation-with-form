@@ -1,6 +1,14 @@
 ## Simple Credit Card Validation With Form
 
+### What
 A small Credit Card Validation form with common CC validation logic, written in Typescript and was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
+
+### Quick Start
+Clone the project, then:
+
+`npm i` or `yarn`
+
+`npm start` or `yarn start`
 
 ### Test Coverage
 100% test coverage on the core logic
