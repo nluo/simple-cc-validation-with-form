@@ -1,8 +1,3 @@
-interface Card {
-  regex: RegExp;
-  name: string;
-}
-
 const discoverCard: Card = {
   regex: /^6011[0-9]{12}$/,
   name: 'Discover'

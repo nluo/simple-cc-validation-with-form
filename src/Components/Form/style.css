@@ -1,4 +1,4 @@
-.form_header {
+.form-header {
     margin-top: 10px;
     margin-bottom: 15px;
     font-size: 18px;
@@ -28,7 +28,7 @@
     border-radius: .25rem;
     line-height: 1.45667;
     min-height: 3.125rem;
-    padding: 0 .625rem;
+    padding: 0.625rem;
     width: 100%;
 }
 
@@ -39,4 +39,34 @@
     line-height: 15px;
     margin-top: 6px;
     margin-bottom: 0;
+}
+
+.buttons-group {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.btn, .btn-primary {
+    color: #fff;
+    background: #1274b8;
+}
+
+.btn, button {
+    border: 1px solid transparent;
+    cursor: pointer;
+    display: inline-block;
+    font-weight: 400;
+    max-width: 17.5rem;
+    min-width: 11.25rem;
+    overflow: hidden;
+    position: relative;
+    text-align: center;
+    text-overflow: ellipsis;
+    transition: all .2s ease-in-out;
+    user-select: none;
+    vertical-align: middle;
+    white-space: nowrap;
+    padding: .8125rem 1.875rem;
+    font-size: 1rem;
+    border-radius: .25rem;
 }

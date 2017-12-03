@@ -50,19 +50,20 @@ export default class CreditCardForm extends React.Component<any, any> {
     return (
       <div>
         <form className="form" onSubmit={this.handleSubmit}>
-          <div className="form_header">
-            <h4> Credit Card Details </h4>
+          <div className="form-header">
+            <h4> Payment Details </h4>
           </div>
+
           <div className="form-group ">
-            <label className="label"> Name On Card </label>
+            <label className="label"> Name On Card <em>*</em></label>
             <input
               className="form-control"
-              placeholder="Bob Smith"
+              placeholder="First Name Last Name"
               type="text" required />
           </div>
 
           <div className="form-group">
-            <label className="label"> Credit Card </label>
+            <label className="label"> Credit Card <em>*</em></label>
             <input
               className="form-control"
               value={creditCardNumber}
@@ -73,7 +74,9 @@ export default class CreditCardForm extends React.Component<any, any> {
             {creditCardError ? <label className="label-error"> Please enter a valid credit card </label> : null }
           </div>
 
-          <button type="submit"> Submit </button>
+          <div className="buttons-group">
+            <button className="btn btn-primary" type="submit"> Submit </button>
+          </div>
         </form>
 
         <div className="result">
