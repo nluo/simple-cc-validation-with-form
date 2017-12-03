@@ -1,0 +1,79 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<div>
+  <form
+    className="form"
+    onSubmit={[Function]}
+  >
+    <div
+      className="form-group form-header"
+    >
+      <h4>
+         Payment Details 
+      </h4>
+    </div>
+    <div
+      className="form-group"
+    >
+      <label
+        className="label"
+      >
+         
+        Name On Card 
+         
+        <em>
+          *
+        </em>
+      </label>
+      <input
+        className="form-control"
+        name="cardHolderName"
+        onBlur={undefined}
+        onChange={[Function]}
+        placeholder="First Name Last Name"
+        required={true}
+        type="text"
+        value=""
+      />
+    </div>
+    <div
+      className="form-group"
+    >
+      <label
+        className="label"
+      >
+         
+        Credit Card
+         
+        <em>
+          *
+        </em>
+      </label>
+      <input
+        className="form-control"
+        name="creditCardNumber"
+        onBlur={[Function]}
+        onChange={[Function]}
+        placeholder={undefined}
+        required={true}
+        type="text"
+        value=""
+      />
+    </div>
+    <div
+      className="buttons-group"
+    >
+      <button
+        className="btn btn-primary"
+        type="submit"
+      >
+         Submit 
+      </button>
+    </div>
+  </form>
+  <div
+    className="result"
+  />
+</div>
+`;
