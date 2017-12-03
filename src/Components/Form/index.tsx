@@ -3,6 +3,7 @@ import './style.css';
 
 import getCreditCardType from '../../validation/getCreditCardType';
 import validateCC from '../../validation/validateCC';
+import InputField from './InputField';
 
 export default class CreditCardForm extends React.Component<any, any> {
   constructor(props: any) {
@@ -11,18 +12,32 @@ export default class CreditCardForm extends React.Component<any, any> {
       creditCardNumber: '',
       cardHolderName: '',
       renderResult: false,
-      creditCardError: false
+      showCreditCardExtra: false,
+      creditCardExtraMsg: ''
     };
   }
 
-  private handleCardNumberInput = (e: React.FormEvent<HTMLInputElement>) => {
+  private handleInputChange = (e: React.FormEvent<HTMLInputElement>) => {
     e.preventDefault();
-    const input = e.target as HTMLInputElement;
-    if (Number.isNaN(Number(input.value))) {
-      return;
+
+    this.setState({
+      renderResult: false
+    });
+
+    const target = e.target as HTMLInputElement;
+
+    if (target.name === 'creditCardNumber' ) {
+
+      this.setState({
+        showCreditCardExtra: false
+      });
+      
+      if (Number.isNaN(Number(target.value))) {
+        return;
+      }
     }
     this.setState({
-      creditCardNumber: input.value
+      [target.name]: target.value
     });
   }
   private validateCCInput = (creditCardNumber: string): void | boolean => {
@@ -34,45 +49,62 @@ export default class CreditCardForm extends React.Component<any, any> {
 
   private handleSubmit = (e: any) => {
     e.preventDefault();
-    // const {creditCardNumber, cardHolderName} = this.state;
     this.setState({
-      renderResult: true
+      renderResult: true,
+      showCreditCardExtra: false
     })
   }
-  private onBlur = (e: any) => {
+  private handleOnBlur = (e: React.FormEvent<HTMLInputElement>) => {
     const { creditCardNumber } = this.state;
-    if (!validateCC(creditCardNumber)) {
-      this.setState({creditCardError: true});
-    }
+    if (creditCardNumber === '') return;
+
+    const creditCardType: string = getCreditCardType(creditCardNumber);
+    const creditCardStatus = validateCC(creditCardNumber) === true? 'Valid': 'Invalid';
+
+    const extraMsg = `Card Type ${creditCardType}: ${creditCardStatus}`
+
+    this.setState({
+      showCreditCardExtra: true,
+      creditCardExtraMsg: extraMsg
+    })
+
   }
   public render() {
-    const { creditCardNumber, renderResult, creditCardError } = this.state;
+    const {
+      creditCardNumber,
+      renderResult,
+      showCreditCardExtra,
+      cardHolderName,
+      creditCardExtraMsg
+     } = this.state;
     return (
       <div>
         <form className="form" onSubmit={this.handleSubmit}>
-          <div className="form-header">
+          <div className="form-group form-header">
             <h4> Payment Details </h4>
           </div>
 
-          <div className="form-group ">
-            <label className="label"> Name On Card <em>*</em></label>
-            <input
-              className="form-control"
-              placeholder="First Name Last Name"
-              type="text" required />
-          </div>
+          <InputField
+            name="cardHolderName"
+            className="form-control"
+            placeHolder="First Name Last Name"
+            value={cardHolderName}
+            onChange={this.handleInputChange}
+            isRequired={true}
+            label="Name On Card "
+          />
 
-          <div className="form-group">
-            <label className="label"> Credit Card <em>*</em></label>
-            <input
-              className="form-control"
-              value={creditCardNumber}
-              type="text"
-              onChange={this.handleCardNumberInput}
-              onBlur= {this.onBlur}
-              required />
-            {creditCardError ? <label className="label-error"> Please enter a valid credit card </label> : null }
-          </div>
+          <InputField
+            name="creditCardNumber"
+            className="form-control"
+            value={creditCardNumber}
+            onChange={this.handleInputChange}
+            isRequired={true}
+            label="Credit Card"
+            onBlur={this.handleOnBlur}
+            labelExtra={showCreditCardExtra}
+            labelExtraMsg={creditCardExtraMsg}
+          />
 
           <div className="buttons-group">
             <button className="btn btn-primary" type="submit"> Submit </button>
@@ -81,9 +113,9 @@ export default class CreditCardForm extends React.Component<any, any> {
 
         <div className="result">
           {renderResult === true ? (
-            <div>
-              <p> {getCreditCardType(creditCardNumber)} </p>
-              <p> {this.validateCCInput(creditCardNumber) === true ? 'Valid' : 'Invalid'} </p>
+            <div className="form-group">
+              <p> Name: {cardHolderName} </p>
+              <p> Card Type {getCreditCardType(creditCardNumber)}: {this.validateCCInput(creditCardNumber) === true ? 'Valid' : 'Invalid'}</p>
             </div>
           ) : null}
         </div>

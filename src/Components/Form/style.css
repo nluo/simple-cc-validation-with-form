@@ -14,6 +14,7 @@
     width: 100%;
     margin-top: 10px;
     margin-bottom: 10px;
+    max-width: 40vw;
 }
 
 .form {
@@ -33,11 +34,11 @@
 }
 
 
-.label-error {
+.label-info {
     text-transform: none;
-    color: #b73c21;
-    line-height: 15px;
-    margin-top: 6px;
+    color: #f0ad4e;
+    line-height: 25px;
+    margin-top: 12px;
     margin-bottom: 0;
 }
 
@@ -69,4 +70,8 @@
     padding: .8125rem 1.875rem;
     font-size: 1rem;
     border-radius: .25rem;
+}
+
+.result {
+  margin-top: 20px;
 }
